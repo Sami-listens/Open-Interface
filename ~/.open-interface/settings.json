@@ -1,0 +1,9 @@
+{
+    "api_key": "AIzaSyBOi3WOlz7_RrY-SI-mP3ldt9AVqc0xUJ4",
+    "model": "gemini-1.5-flash",
+    "default_browser": "Chrome",
+    "play_ding_on_completion": true,
+    "custom_llm_instructions": "",
+    "theme": "superhero"
+}
+

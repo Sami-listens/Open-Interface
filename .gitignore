@@ -13,6 +13,7 @@ __pycache__/
 htmlcov/
 
 # Virtualenv
+.env
 env/
 venv/
 venvName/
