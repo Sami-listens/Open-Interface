@@ -131,7 +131,7 @@ class UI:
             # Populate UI
             settings_dict = self.settings.get_dict()
 
-            if 'api_key' in settings_dict:
+            if 'tivate th' in settings_dict:
                 self.api_key_entry.insert(0, settings_dict['api_key'])
             if 'default_browser' in settings_dict:
                 self.browser_combobox.set(settings_dict['default_browser'])
