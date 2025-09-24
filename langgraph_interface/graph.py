@@ -1,6 +1,7 @@
 """
 LangGraph Implementation for Open Interface
 """
+import time
 from typing import Literal
 from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import ToolNode, tools_condition
@@ -98,10 +99,11 @@ class OpenInterfaceGraph:
             "current_instructions": None,
             "execution_results": [],
             "screenshot_data": None,
+            "status_updates": [],
             "is_complete": False,
             "error_message": None,
             "interrupt_requested": False,
-            "model_name": self.nodes.settings_dict.get('model', 'gemini-1.5-flash'),
+            "model_name": self.nodes.settings_dict.get('model', 'gemini-2.5-flash'),
             "api_key": self.nodes.settings_dict.get('api_key', ''),
             "custom_instructions": self.nodes.settings_dict.get('custom_llm_instructions', '')
         }
@@ -117,7 +119,7 @@ class OpenInterfaceGraph:
             }
     
     def stream_execution(self, user_request: str, max_steps: int = 10):
-        """Stream the execution of a user request"""
+        """Stream the execution of a user request with real-time status updates"""
         
         initial_state = {
             "messages": [],
@@ -127,20 +129,38 @@ class OpenInterfaceGraph:
             "current_instructions": None,
             "execution_results": [],
             "screenshot_data": None,
+            "status_updates": [],
             "is_complete": False,
             "error_message": None,
             "interrupt_requested": False,
-            "model_name": self.nodes.settings_dict.get('model', 'gemini-1.5-flash'),
+            "model_name": self.nodes.settings_dict.get('model', 'gemini-2.5-flash'),
             "api_key": self.nodes.settings_dict.get('api_key', ''),
             "custom_instructions": self.nodes.settings_dict.get('custom_llm_instructions', '')
         }
         
         try:
-            # Stream the graph execution
-            for chunk in self.graph.stream(initial_state):
-                yield chunk
+            # Stream the graph execution with enhanced output
+            for chunk in self.graph.stream(initial_state, stream_mode="updates"):
+                # Enhance chunks with additional status information
+                node_name = list(chunk.keys())[0] if chunk else "unknown"
+                node_data = chunk.get(node_name, {}) if chunk else {}
+                
+                # Add node information for better streaming context
+                enhanced_chunk = {
+                    node_name: {
+                        **node_data,
+                        "node_name": node_name,
+                        "timestamp": time.time()
+                    }
+                }
+                
+                yield enhanced_chunk
         except Exception as e:
             yield {
-                "error_message": f"Graph execution failed: {str(e)}",
-                "is_complete": True
+                "error": {
+                    "error_message": f"Graph execution failed: {str(e)}",
+                    "is_complete": True,
+                    "node_name": "error",
+                    "timestamp": time.time()
+                }
             }

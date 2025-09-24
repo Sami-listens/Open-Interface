@@ -20,6 +20,7 @@ class OpenInterfaceState(TypedDict):
     current_instructions: Optional[Dict[str, Any]]
     execution_results: List[Dict[str, Any]]
     screenshot_data: Optional[str]
+    status_updates: List[str]  # For streaming thinking messages
     
     # Control flow
     is_complete: bool
