@@ -1,0 +1,156 @@
+{
+  "name": "Comsense Cloud Login",
+  "description": "Automated workflow to open Windows App and login to Comsense Cloud",
+  "created": "2024-01-01T10:00:00",
+  "screen_size": {
+    "width": 1512,
+    "height": 982
+  },
+  "actions": [
+    {
+      "type": "comment",
+      "text": "Step 1: Open Spotlight",
+      "timestamp": 1704103200
+    },
+    {
+      "type": "hotkey",
+      "keys": ["command", "space"],
+      "timestamp": 1704103201
+    },
+    {
+      "type": "delay",
+      "seconds": 1.5,
+      "reason": "Wait for Spotlight to open",
+      "timestamp": 1704103202
+    },
+    {
+      "type": "comment",
+      "text": "Step 2: Type Windows App",
+      "timestamp": 1704103203
+    },
+    {
+      "type": "type",
+      "text": "Windows App",
+      "interval": 0.1,
+      "timestamp": 1704103204
+    },
+    {
+      "type": "delay",
+      "seconds": 1,
+      "reason": "Wait for search results",
+      "timestamp": 1704103205
+    },
+    {
+      "type": "comment",
+      "text": "Step 3: Open Windows App",
+      "timestamp": 1704103206
+    },
+    {
+      "type": "key",
+      "key": "enter",
+      "presses": 1,
+      "timestamp": 1704103207
+    },
+    {
+      "type": "delay",
+      "seconds": 8,
+      "reason": "Wait for Windows App to fully load",
+      "timestamp": 1704103208
+    },
+    {
+      "type": "comment",
+      "text": "Step 4: Maximize window",
+      "timestamp": 1704103216
+    },
+    {
+      "type": "hotkey",
+      "keys": ["ctrl", "command", "f"],
+      "timestamp": 1704103217
+    },
+    {
+      "type": "delay",
+      "seconds": 2,
+      "reason": "Wait for window to maximize",
+      "timestamp": 1704103218
+    },
+    {
+      "type": "comment",
+      "text": "Step 5: Double-click Comsense Cloud tile",
+      "timestamp": 1704103220
+    },
+    {
+      "type": "click",
+      "click_type": "double",
+      "x": 411,
+      "y": 254,
+      "timestamp": 1704103221
+    },
+    {
+      "type": "delay",
+      "seconds": 5,
+      "reason": "Wait for credentials dialog",
+      "timestamp": 1704103222
+    },
+    {
+      "type": "comment",
+      "text": "Step 6: Enter username",
+      "timestamp": 1704103227
+    },
+    {
+      "type": "type",
+      "text": "your_username",
+      "interval": 0.05,
+      "timestamp": 1704103228
+    },
+    {
+      "type": "comment",
+      "text": "Step 7: Tab to password field",
+      "timestamp": 1704103229
+    },
+    {
+      "type": "key",
+      "key": "tab",
+      "presses": 1,
+      "timestamp": 1704103230
+    },
+    {
+      "type": "delay",
+      "seconds": 0.5,
+      "reason": "Small delay before typing password",
+      "timestamp": 1704103231
+    },
+    {
+      "type": "comment",
+      "text": "Step 8: Enter password",
+      "timestamp": 1704103232
+    },
+    {
+      "type": "type",
+      "text": "your_password",
+      "interval": 0.05,
+      "timestamp": 1704103233
+    },
+    {
+      "type": "comment",
+      "text": "Step 9: Submit login",
+      "timestamp": 1704103234
+    },
+    {
+      "type": "key",
+      "key": "enter",
+      "presses": 1,
+      "timestamp": 1704103235
+    },
+    {
+      "type": "delay",
+      "seconds": 10,
+      "reason": "Wait for Comsense to load",
+      "timestamp": 1704103236
+    },
+    {
+      "type": "comment",
+      "text": "Workflow complete!",
+      "timestamp": 1704103246
+    }
+  ]
+}

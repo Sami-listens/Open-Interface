@@ -1,0 +1,119 @@
+{
+  "name": "test1",
+  "description": "NA",
+  "created": "2025-10-01T18:19:11.899451",
+  "screen_size": {
+    "width": 1512,
+    "height": 982
+  },
+  "actions": [
+    {
+      "type": "applescript_spotlight",
+      "description": "Open Spotlight using AppleScript (most reliable)",
+      "timestamp": 1759324782.741146
+    },
+    {
+      "type": "delay",
+      "seconds": 1.5,
+      "reason": "Wait for Spotlight to open",
+      "timestamp": 1704103202
+    },
+    {
+      "type": "type",
+      "text": "Windows app",
+      "interval": 0.1,
+      "timestamp": 1759324828.815168
+    },
+    {
+      "type": "delay",
+      "seconds": 0.5,
+      "reason": "Wait to hit enter",
+      "timestamp": 1704103202
+    },
+    {
+      "type": "key",
+      "key": "enter",
+      "presses": 1,
+      "timestamp": 1759324849.8555672
+    },
+    {
+      "type": "delay",
+      "seconds": 2,
+      "reason": "Wait for Windows App to fully open",
+      "timestamp": 1704103202
+    },
+    {
+      "type": "hotkey",
+      "keys": ["ctrl", "command", "f"],
+      "timestamp": 1704103203
+    },
+    {
+      "type": "delay",
+      "seconds": 2,
+      "reason": "Wait for window to maximize",
+      "timestamp": 1704103204
+    },
+    {
+      "type": "click",
+      "click_type": "double",
+      "x": 414,
+      "y": 254,
+      "timestamp": 1759324895.202999
+    },
+    {
+      "type": "delay",
+      "seconds": 15,
+      "reason": "Wait for credentials window to open",
+      "timestamp": 1704103202
+    },
+    {
+      "type": "type",
+      "text": "Wswllse#3xDG",
+      "interval": 0.1,
+      "timestamp": 1759324988.180819
+    },
+    {
+      "type": "key",
+      "key": "enter",
+      "presses": 1,
+      "timestamp": 1759325013.877586
+    },
+    {
+      "type": "delay",
+      "seconds": 60,
+      "reason": "Wait for COMSENSE VM to open",
+      "timestamp": 1704103202
+    },
+    {
+      "type": "click",
+      "click_type": "double",
+      "x": 44,
+      "y": 457,
+      "timestamp": 1704103202
+    },
+    {
+      "type": "delay",
+      "seconds": 15,
+      "reason": "Wait for credentials window to open",
+      "timestamp": 1704103202
+    },
+    {
+      "type": "type",
+      "text": "comsense",
+      "interval": 0.2,
+      "timestamp": 1759324988.180819
+    },
+    {
+      "type": "delay",
+      "seconds": 1,
+      "reason": "Wait for COMSENSE VM to open",
+      "timestamp": 1704103202
+    },
+    {
+      "type": "key",
+      "key": "enter",
+      "presses": 1,
+      "timestamp": 1759325013.877586
+    }
+  ]
+}
