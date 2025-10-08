@@ -52,10 +52,21 @@ def play_workflow():
             pyautogui.write(action["text"], interval=action["interval"])
             
         elif action["type"] == "key":
-            pyautogui.press(action["key"], presses=action["presses"])
+            if action["key"] == "win":
+                # Handle Windows key specifically
+                pyautogui.press("winleft", presses=action["presses"])
+            else:
+                pyautogui.press(action["key"], presses=action["presses"])
             
         elif action["type"] == "hotkey":
-            pyautogui.hotkey(*action["keys"])
+            # Handle Windows key in hotkey combinations
+            keys = []
+            for key in action["keys"]:
+                if key == "win":
+                    keys.append("winleft")
+                else:
+                    keys.append(key)
+            pyautogui.hotkey(*keys)
             
         elif action["type"] == "delay":
             reason = f" ({action.get('reason', '')})" if action.get('reason') else ""

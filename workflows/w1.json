@@ -85,16 +85,15 @@
       "timestamp": 1704103202
     },
     {
-      "type": "click",
-      "click_type": "double",
-      "x": 44,
-      "y": 457,
+      "type": "key",
+      "key": "win",
+      "presses": 1,
       "timestamp": 1704103202
     },
     {
       "type": "delay",
-      "seconds": 15,
-      "reason": "Wait for credentials window to open",
+      "seconds": 2,
+      "reason": "Wait for Start menu to open",
       "timestamp": 1704103202
     },
     {
@@ -105,8 +104,8 @@
     },
     {
       "type": "delay",
-      "seconds": 1,
-      "reason": "Wait for COMSENSE VM to open",
+      "seconds": 3,
+      "reason": "Wait for search results to appear",
       "timestamp": 1704103202
     },
     {
@@ -114,6 +113,90 @@
       "key": "enter",
       "presses": 1,
       "timestamp": 1759325013.877586
+    },
+    {
+      "type": "delay",
+      "seconds": 5,
+      "reason": "Wait for Comsense login dialog to open",
+      "timestamp": 1704103202
+    },
+    {
+      "type": "type",
+      "text": "comsense",
+      "interval": 0.1,
+      "description": "Enter password 'comsense' (field is already focused)",
+      "timestamp": 1759325101.000000
+    },
+    {
+      "type": "delay",
+      "seconds": 0.5,
+      "reason": "Wait after typing password",
+      "timestamp": 1759325101.500000
+    },
+    {
+      "type": "key",
+      "key": "tab",
+      "presses": 1,
+      "description": "Tab to Database dropdown field",
+      "timestamp": 1759325102.000000
+    },
+    {
+      "type": "delay",
+      "seconds": 0.5,
+      "reason": "Wait for database field to be focused",
+      "timestamp": 1759325102.500000
+    },
+    {
+      "type": "key",
+      "key": "down",
+      "presses": 1,
+      "description": "Navigate down to 1400_Training option",
+      "timestamp": 1759325103.000000
+    },
+    {
+      "type": "delay",
+      "seconds": 0.5,
+      "reason": "Wait after navigating to option",
+      "timestamp": 1759325103.500000
+    },
+    {
+      "type": "key",
+      "key": "enter",
+      "presses": 1,
+      "description": "Select 1400_Training from dropdown",
+      "timestamp": 1759325104.000000
+    },
+    {
+      "type": "delay",
+      "seconds": 0.5,
+      "reason": "Wait after selecting database",
+      "timestamp": 1759325104.500000
+    },
+    {
+      "type": "key",
+      "key": "enter",
+      "presses": 1,
+      "description": "Press Enter to click OK button",
+      "timestamp": 1759325105.000000
+    },
+    {
+      "type": "delay",
+      "seconds": 0.5,
+      "reason": "Wait after first Enter press",
+      "timestamp": 1759325105.500000
+    },
+    {
+      "type": "key",
+      "key": "enter",
+      "presses": 1,
+      "description": "Press Enter again to ensure OK button is clicked",
+      "timestamp": 1759325106.000000
+    },
+    {
+      "type": "delay",
+      "seconds": 5,
+      "reason": "Wait for login to complete and main application to load",
+      "timestamp": 1759325110.000000
     }
   ]
 }
