@@ -197,6 +197,61 @@
       "seconds": 5,
       "reason": "Wait for login to complete and main application to load",
       "timestamp": 1759325110.000000
+    },
+    {
+      "type": "click",
+      "click_type": "single",
+      "x": 25,
+      "y": 150,
+      "description": "Click on Projects button under Estimating",
+      "timestamp": 1759325115.000000
+    },
+    {
+      "type": "delay",
+      "seconds": 1,
+      "reason": "Wait after clicking Projects button",
+      "timestamp": 1759325116.000000
+    },
+    {
+      "type": "type",
+      "text": "205394",
+      "interval": 0.1,
+      "description": "Enter project code 205394",
+      "timestamp": 1759325117.000000
+    },
+    {
+      "type": "key",
+      "key": "tab",
+      "presses": 1,
+      "description": "Press Tab to load the project",
+      "timestamp": 1759325118.000000
+    },
+    {
+      "type": "delay",
+      "seconds": 2,
+      "reason": "Wait for project to load",
+      "timestamp": 1759325120.000000
+    },
+    {
+      "type": "click",
+      "click_type": "single",
+      "x": 1300,
+      "y": 185,
+      "description": "Click Show Related Documents button",
+      "timestamp": 1759325122.000000
+    },
+    {
+      "type": "delay",
+      "seconds": 5,
+      "reason": "Wait before closing Windows Explorer window",
+      "timestamp": 1759325127.000000
+    },
+    {
+      "type": "hotkey",
+      "keys": ["alt", "f4"],
+      "description": "Close Windows Explorer window using keyboard shortcut",
+      "timestamp": 1759325132.000000
     }
+
   ]
 }
