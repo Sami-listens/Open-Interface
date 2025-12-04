@@ -10,6 +10,7 @@ try:
     from .state import OpenInterfaceState
     from .nodes import OpenInterfaceNodes
     from .tools import create_pyautogui_tools
+    from .phased_coordinator_node import phased_coordinator_node
 except ImportError:
     # Handle direct execution
     import sys
@@ -18,6 +19,7 @@ except ImportError:
     from langgraph_interface.state import OpenInterfaceState
     from langgraph_interface.nodes import OpenInterfaceNodes
     from langgraph_interface.tools import create_pyautogui_tools
+    from langgraph_interface.phased_coordinator_node import phased_coordinator_node
 
 
 class OpenInterfaceGraph:
@@ -40,13 +42,22 @@ class OpenInterfaceGraph:
         builder.add_node("validation", self.nodes.validation_node)
         builder.add_node("screenshot", self.nodes.screenshot_node)
         builder.add_node("response", self.nodes.response_node)
+        builder.add_node("phased_coordinator", phased_coordinator_node)
         
         # Add tool node for direct tool execution
         tool_node = ToolNode(tools=self.tools)
         builder.add_node("tools", tool_node)
         
         # Define edges
-        builder.add_edge(START, "planning")
+        # Check if phased workflow or regular workflow
+        builder.add_conditional_edges(
+            START,
+            self._route_start,
+            {
+                "phased": "phased_coordinator",
+                "regular": "planning"
+            }
+        )
         
         # Planning -> Execution
         builder.add_edge("planning", "execution")
@@ -70,8 +81,28 @@ class OpenInterfaceGraph:
         # Response -> END
         builder.add_edge("response", END)
         
+        # Phased Coordinator -> END (completes in one shot)
+        builder.add_edge("phased_coordinator", END)
+        
         # Compile the graph
         return builder.compile()
+    
+    def _route_start(self, state: OpenInterfaceState) -> Literal["phased", "regular"]:
+        """Route to phased workflow or regular workflow"""
+        # Check if phased_workflow_file is set in state
+        if state.get("phased_workflow_file"):
+            return "phased"
+        
+        # Check if user request mentions Harrison, reconciliation, or Excel
+        user_request = state.get("user_request", "").lower()
+        keywords = ["harrison", "reconcile", "excel", "comsense", "phased", "206551"]
+        if any(keyword in user_request for keyword in keywords):
+            # Set default phased workflow
+            state["phased_workflow_file"] = "workflows/w1_phased.json"
+            state["verify_phases"] = True
+            return "phased"
+        
+        return "regular"
     
     def _should_continue(self, state: OpenInterfaceState) -> Literal["continue", "complete"]:
         """Determine if the graph should continue or complete"""

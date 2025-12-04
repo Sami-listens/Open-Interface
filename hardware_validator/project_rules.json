@@ -1,0 +1,86 @@
+[
+  {
+    "id": "PR-01",
+    "category": "Components",
+    "description": "Silencer quantity and location requirements for frames.",
+    "match_criteria": "Hollow Metal Frames",
+    "check_logic": "Verify 3 silencers on strike side of single doors, 3 on center mullions, and 2 on the head of pairs without center mullions."
+  },
+  {
+    "id": "PR-02",
+    "category": "Fasteners",
+    "description": "Removable stops require specific security fasteners.",
+    "match_criteria": "Hollow Metal Frames with Removable Stops",
+    "check_logic": "Ensure countersink style tamper-proof screws are specified."
+  },
+  {
+    "id": "PR-03",
+    "category": "Material",
+    "description": "Exterior double doors require specific astragal type.",
+    "match_criteria": "Exterior Double Doors",
+    "check_logic": "Validate that astragals are Steel, Z-shaped."
+  },
+  {
+    "id": "PR-04",
+    "category": "Installation",
+    "description": "Overlapping astragal installation orientation.",
+    "match_criteria": "Doors with Overlapping Astragals (e.g., Set 003, 008, 041)",
+    "check_logic": "Verify astragal is specified for installation on the 'PUSH SIDE' of the Inactive Leaf."
+  },
+  {
+    "id": "PR-05",
+    "category": "Sizing",
+    "description": "Threshold width calculation rule.",
+    "match_criteria": "Thresholds (e.g., Pemko 195A)",
+    "check_logic": "Ensure threshold width equals Frame Depth + 1/2 inch."
+  },
+  {
+    "id": "PR-06",
+    "category": "Performance",
+    "description": "Wind Borne Debris Impact requirements based on elevation.",
+    "match_criteria": "Glazed Openings / Storefronts",
+    "check_logic": "Openings < 30ft from grade must meet Large Missile Test. Openings > 30ft must meet Small Missile Test."
+  },
+  {
+    "id": "PR-07",
+    "category": "Components",
+    "description": "Louver requirements for fire-rated assemblies.",
+    "match_criteria": "Fire-Rated Doors with Louvers",
+    "check_logic": "Verify louvers are UL or ITS listed fusible link type with the same rating as the door."
+  },
+  {
+    "id": "PR-08",
+    "category": "Scope",
+    "description": "Power supply provision responsibility.",
+    "match_criteria": "Electrified Hardware Sets (e.g., Set 002, 010)",
+    "check_logic": "Ensure Power Supplies are excluded from the Hardware Set and noted as 'By Security Section' / 'By Others'."
+  },
+  {
+    "id": "PR-09",
+    "category": "Material",
+    "description": "Galvanizing requirements for exterior frames.",
+    "match_criteria": "Exterior Door Frames",
+    "check_logic": "Verify components are hot-dipped zinc-iron alloy-coated (galvannealed) A40/ZF120."
+  },
+  {
+    "id": "PR-10",
+    "category": "Sizing",
+    "description": "Frame gauge requirements based on opening width.",
+    "match_criteria": "Hollow Metal Frames",
+    "check_logic": "Verify frames for openings over 4 ft wide are 16 gauge."
+  },
+  {
+    "id": "PR-11",
+    "category": "Components",
+    "description": "Exterior frame construction type.",
+    "match_criteria": "Exterior Door Frames",
+    "check_logic": "Verify frames are specified as Knock-down type (unless superseded by specific wind-load/impact assembly requirements)."
+  },
+  {
+    "id": "PR-12",
+    "category": "Sizing",
+    "description": "Kick plate sizing relative to door width.",
+    "match_criteria": "Kick Plates (e.g., Rockwood K1050)",
+    "check_logic": "Verify kick plate width is 2 inches less than nominal door width (e.g., 34 inch plate for 36 inch door)."
+  }
+]

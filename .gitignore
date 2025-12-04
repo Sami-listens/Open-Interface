@@ -20,6 +20,10 @@ venvName/
 
 # DB
 instance/
+*.db
+*.sqlite
+*.sqlite3
+*.pkl
 
 # Build files
 dist/
@@ -30,3 +34,32 @@ build/
 
 # IDE
 .idea/
+.vscode/
+
+# Node
+node_modules/
+agent-chat-ui/node_modules/
+
+# Screenshots
+screenshots/
+agent_screenshots/
+demo_screenshots/
+*.png
+
+# Large Project Files & Vendor
+vendor/
+03 Manufacturer Catalogs - Hardware/
+Project Example - THM WWTP/
+Validator Rules/
+
+# Documents & Binaries
+*.pdf
+*.xlsx
+*.xlsm
+*.pptx
+*.docx
+*.zip
+
+# Extracted Data
+hardware_validator/*_extract.csv
+hardware_validator/*_annotated.csv

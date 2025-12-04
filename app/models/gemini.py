@@ -32,6 +32,23 @@ class Gemini:
         )
         json_instructions: dict[str, Any] = self.convert_llm_response_to_json_instructions(llm_response)
         return json_instructions
+    
+    def generate_text_only(self, prompt: str) -> str:
+        """
+        Generate text-only response without screenshots.
+        Used for hardware validation and other text-only tasks.
+        Simple API call without safety settings.
+        """
+        # Text-only message content (no images)
+        message_content = [{"text": self.context + "\n\n" + prompt}]
+        
+        # Simple API call without any safety settings configuration
+        llm_response = self.client.models.generate_content(
+            model=self.model_name,
+            contents=message_content,
+        )
+        
+        return llm_response.text.strip()
 
     def format_user_request_for_llm(self, original_user_request, step_num) -> list[Any]:
         base64_img: str = Screen().get_screenshot_in_base64()

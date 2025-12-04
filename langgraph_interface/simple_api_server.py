@@ -205,7 +205,8 @@ async def stream_thread_run(assistant_id: str, thread_id: str, request: Request)
                                     })
                             
                             if tool_calls:
-                                yield f"event: updates\ndata: {json.dumps({'planning': {'messages': [{'id': str(uuid.uuid4()), 'type': 'ai', 'content': 'Here are the actions I\'ll perform:', 'tool_calls': tool_calls}]}})}\n\n"
+                                content_msg = "Here are the actions I'll perform:"
+                                yield f"event: updates\ndata: {json.dumps({'planning': {'messages': [{'id': str(uuid.uuid4()), 'type': 'ai', 'content': content_msg, 'tool_calls': tool_calls}]}})}\n\n"
                     
                     elif "execution" in chunk:
                         execution_data = chunk["execution"]

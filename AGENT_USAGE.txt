@@ -1,0 +1,136 @@
+==========================================
+✨ LATEST IMPROVEMENTS (Oct 24, 2025)
+==========================================
+
+FIXED ISSUES:
+-------------
+1. ✅ JSON Parsing Errors - Added `re` import and fixed `parse_json_robust` method calls
+2. ✅ Table Navigation - Fixed to use Tab key (not arrow keys) for column navigation
+3. ✅ Field Name Mapping - Maps Excel "Exterior" to Comsense "Ext" automatically
+4. ✅ Module Awareness - Detects and adapts to different modules (Doors/Frames/Hardware)
+5. ✅ Row Correction - Uses up/down arrows to correct row position if needed
+
+NEW CAPABILITIES:
+-----------------
+• detect_current_module() - Identifies which Comsense module is active
+• learn_column_structure() - Dynamically learns column layout for any module
+• navigate_to_field() - Uses Tab key to navigate columns (25 tabs for Ext column)
+• correct_row_position() - Uses up/down arrows to fix row selection
+• verify_current_column() - Confirms cursor is in the right column
+• Module-specific mappings - Different column layouts for Doors/Frames/Hardware
+
+NAVIGATION KEYS IN COMSENSE:
+----------------------------
+• Tab = Move right between columns
+• Shift+Tab = Move left between columns  
+• Up/Down arrows = Move between rows
+• Enter = Confirm edit
+• Escape = Cancel/close dialogs
+• Ctrl+F = Search for opening
+• Home/End = Beginning/end of row (may not work in all fields)
+
+HOW IT WORKS NOW:
+-----------------
+1. Detects current module (Doors/Frames/Hardware)
+2. Finds the opening reference (e.g., "102B") using vision
+3. Clicks on it to select that row
+4. Verifies correct row (uses up/down if needed)
+5. Tabs to the target column (e.g., 25 tabs for Ext)
+6. Verifies correct column before editing
+7. Edits the value and confirms with Enter
+8. Takes screenshots for verification
+
+TEST SCRIPTS:
+-------------
+• comsense_agent_s3_hybrid.py - Main agent with all improvements
+• test_comsense_hybrid.py - Test individual components
+
+==========================================
+
+HYBRID AGENT S3 + GEMINI GROUNDING SYSTEM
+==========================================
+
+ARCHITECTURE
+------------
+1. Planning Layer: Gemini 2.5 Pro (Agent S3 reasoning style)
+   - Analyzes screenshots
+   - Plans next actions
+   - Provides spatial hints
+
+2. Grounding Layer: Gemini 2.0 Flash (structured outputs)
+   - Detects UI elements
+   - Returns normalized bounding boxes [0-1]
+   - Filters by spatial constraints
+
+3. Stabilization Layer: Visual feedback loop
+   - Moves cursor to target
+   - Takes screenshot with cursor overlay
+   - Verifies position with Gemini
+   - Corrects if needed (max 5 attempts)
+   - 3px convergence threshold
+
+4. Actuation: PyAutoGUI
+   - Precise clicks
+   - Keyboard input
+   - Screenshot capture
+
+USAGE
+-----
+1. Ensure Comsense is open with project 1200255 loaded
+
+2. Run:
+   conda activate open-interface
+   python comsense_agent_s3_hybrid.py
+
+3. The agent will:
+   - Load 5 edits from Excel
+   - Navigate to Doors module
+   - Apply first 2 edits (demo)
+   - Save screenshots to agent_screenshots/
+
+KEY FEATURES
+------------
+✓ Structured bbox detection (normalized coordinates)
+✓ Multi-candidate selection (top 3 by confidence)
+✓ Visual verification with cursor overlay
+✓ Iterative correction with convergence
+✓ Spatial filtering (e.g., left sidebar only)
+✓ Full screenshot audit trail
+✓ Confidence-based selection
+
+ACCURACY IMPROVEMENTS
+--------------------
+1. Normalized coordinates (0-1) avoid resolution issues
+2. Multiple candidates provide fallback options
+3. Visual feedback loop catches misclicks before execution
+4. Spatial hints constrain search space
+5. Convergence threshold ensures precision
+6. Screenshot artifacts enable debugging
+
+PARAMETERS TO TUNE
+------------------
+- max_attempts: 5 (stabilization retries)
+- convergence_threshold: 3 pixels
+- confidence thresholds: detect ≥0.5, verify ≥0.85
+- top_candidates: 3
+- models: gemini-2.5-pro (planning), gemini-2.0-flash-exp (grounding)
+
+FILES
+-----
+- comsense_agent_s3_hybrid.py: Main hybrid agent
+- comsense_ai_agent.py: Alternative standalone version
+- agent_screenshots/: Execution artifacts
+- demo_comsense_reconcile_v2.py: Demo version
+
+EXTENDING TO FULL 5 EDITS
+--------------------------
+Change line: `for i, edit in enumerate(edits[:2], 1):`
+To:         `for i, edit in enumerate(edits, 1):`
+
+TROUBLESHOOTING
+---------------
+1. "No elements detected" → Adjust spatial_hints or target description
+2. "Failed to stabilize" → Lower convergence_threshold or increase max_attempts
+3. Wrong element clicked → Add more spatial constraints (max_x, region)
+4. Slow performance → Use gemini-flash for planning too
+

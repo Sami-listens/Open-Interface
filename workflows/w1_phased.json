@@ -1,0 +1,265 @@
+{
+  "name": "Harrison Reconciliation Workflow - Phased",
+  "description": "Phased workflow with Excel review and Comsense data entry",
+  "project_number": "1200255",
+  "excel_file_path": "Project Example - THM WWTP/1. Estimates/00-Pricing/THM WWTP - Project Tool - 8C.xlsm",
+  "phases": [
+    {
+      "id": "phase_0a",
+      "name": "Connect to VM",
+      "description": "Connect to Windows Remote Desktop VM",
+      "type": "workflow_execution",
+      "actions": [
+        {
+          "type": "applescript_spotlight",
+          "description": "Open Spotlight using AppleScript",
+          "timestamp": 1759324782.741146
+        },
+        {
+          "type": "delay",
+          "seconds": 1.5,
+          "reason": "Wait for Spotlight to open",
+          "timestamp": 1704103202
+        },
+        {
+          "type": "type",
+          "text": "Windows app",
+          "interval": 0.1,
+          "timestamp": 1759324828.815168
+        },
+        {
+          "type": "delay",
+          "seconds": 0.5,
+          "reason": "Wait to hit enter",
+          "timestamp": 1704103202
+        },
+        {
+          "type": "key",
+          "key": "enter",
+          "presses": 1,
+          "timestamp": 1759324849.8555672
+        },
+        {
+          "type": "delay",
+          "seconds": 2,
+          "reason": "Wait for Windows App to fully open",
+          "timestamp": 1704103202
+        },
+        {
+          "type": "hotkey",
+          "keys": ["ctrl", "command", "f"],
+          "timestamp": 1704103203
+        },
+        {
+          "type": "delay",
+          "seconds": 2,
+          "reason": "Wait for window to maximize",
+          "timestamp": 1704103204
+        },
+        {
+          "type": "click",
+          "click_type": "double",
+          "x": 414,
+          "y": 254,
+          "timestamp": 1759324895.202999
+        },
+        {
+          "type": "delay",
+          "seconds": 15,
+          "reason": "Wait for credentials window to open",
+          "timestamp": 1704103202
+        },
+        {
+          "type": "type",
+          "text": "Wswllse#3xDG",
+          "interval": 0.1,
+          "timestamp": 1759324988.180819
+        },
+        {
+          "type": "key",
+          "key": "enter",
+          "presses": 1,
+          "timestamp": 1759325013.877586
+        },
+        {
+          "type": "delay",
+          "seconds": 60,
+          "reason": "Wait for COMSENSE VM to open",
+          "timestamp": 1704103202
+        }
+      ],
+      "verification_prompt": "Check that Windows VM desktop is visible and fully loaded"
+    },
+    {
+      "id": "phase_0b",
+      "name": "Parse Excel File",
+      "description": "Parse Excel file from local system to identify edits",
+      "type": "excel_parsing",
+      "config": {
+        "excel_file_path": "Project Example - THM WWTP/1. Estimates/00-Pricing/THM WWTP - Project Tool - 8C.xlsm",
+        "sheet_name": "Door Schedule",
+        "verify_colors": true
+      },
+      "verification_prompt": "Check that Excel file has been parsed and edits identified"
+    },
+    {
+      "id": "phase_1",
+      "name": "Comsense Launch & Login",
+      "description": "Open Comsense application and login to Training DB",
+      "type": "workflow_execution",
+      "actions": [
+        {
+          "type": "key",
+          "key": "win",
+          "presses": 1,
+          "timestamp": 1704103202
+        },
+        {
+          "type": "delay",
+          "seconds": 2,
+          "reason": "Wait for Start menu to open",
+          "timestamp": 1704103202
+        },
+        {
+          "type": "type",
+          "text": "comsense",
+          "interval": 0.2,
+          "timestamp": 1759324988.180819
+        },
+        {
+          "type": "delay",
+          "seconds": 3,
+          "reason": "Wait for search results to appear",
+          "timestamp": 1704103202
+        },
+        {
+          "type": "key",
+          "key": "enter",
+          "presses": 1,
+          "timestamp": 1759325013.877586
+        },
+        {
+          "type": "delay",
+          "seconds": 5,
+          "reason": "Wait for Comsense login dialog to open",
+          "timestamp": 1704103202
+        },
+        {
+          "type": "type",
+          "text": "comsense",
+          "interval": 0.1,
+          "description": "Enter password 'comsense'",
+          "timestamp": 1759325101.000000
+        },
+        {
+          "type": "delay",
+          "seconds": 0.5,
+          "reason": "Wait after typing password",
+          "timestamp": 1759325101.500000
+        },
+        {
+          "type": "key",
+          "key": "enter",
+          "presses": 1,
+          "description": "Press Enter to login (skip database selection)",
+          "timestamp": 1759325105.000000
+        },
+        {
+          "type": "delay",
+          "seconds": 5,
+          "reason": "Wait for login to complete and main application to load",
+          "timestamp": 1759325110.000000
+        }
+      ],
+      "verification_prompt": "Check that Comsense main application is open with menu visible"
+    },
+    {
+      "id": "phase_2",
+      "name": "Project Navigation",
+      "description": "Navigate to project and open related documents",
+      "type": "workflow_execution",
+      "actions": [
+        {
+          "type": "click",
+          "click_type": "single",
+          "x": 25,
+          "y": 150,
+          "description": "Click on Projects button under Estimating",
+          "timestamp": 1759325115.000000
+        },
+        {
+          "type": "delay",
+          "seconds": 1,
+          "reason": "Wait after clicking Projects button",
+          "timestamp": 1759325116.000000
+        },
+        {
+          "type": "type",
+          "text": "1200255",
+          "interval": 0.1,
+          "description": "Enter project code (will be substituted)",
+          "timestamp": 1759325117.000000
+        },
+        {
+          "type": "key",
+          "key": "tab",
+          "presses": 1,
+          "description": "Press Tab to load the project",
+          "timestamp": 1759325118.000000
+        },
+        {
+          "type": "delay",
+          "seconds": 2,
+          "reason": "Wait for project to load",
+          "timestamp": 1759325120.000000
+        },
+        {
+          "type": "comment",
+          "text": "Now navigate to Doors module under ESTIMATING"
+        },
+        {
+          "type": "click",
+          "click_type": "single",
+          "x": 23,
+          "y": 404,
+          "description": "Click on Doors module under ESTIMATING section",
+          "timestamp": 1759325122.000000
+        },
+        {
+          "type": "delay",
+          "seconds": 1,
+          "reason": "Wait for Doors module to open",
+          "timestamp": 1759325123.000000
+        },
+        {
+          "type": "key",
+          "key": "tab",
+          "presses": 1,
+          "description": "Press Tab to load door details in the module",
+          "timestamp": 1759325124.000000
+        },
+        {
+          "type": "delay",
+          "seconds": 2,
+          "reason": "Wait for door details to load",
+          "timestamp": 1759325126.000000
+        }
+      ],
+      "verification_prompt": "Check that project is loaded in Comsense and document folder was opened"
+    },
+    {
+      "id": "phase_3",
+      "name": "Data Reconciliation",
+  "description": "Apply Excel edits to Comsense Doors module using LLM-based computer vision agent (supports Agent S if installed)",
+      "type": "reconciliation",
+      "config": {
+        "use_excel_edits": true,
+        "verify_each_edit": true,
+    "module": "doors",
+    "agent_backend": "auto"  
+      },
+      "verification_prompt": "Check that all edits from Excel have been applied to Comsense"
+    }
+  ]
+}
+

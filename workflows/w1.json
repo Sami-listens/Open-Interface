@@ -135,62 +135,10 @@
     },
     {
       "type": "key",
-      "key": "tab",
-      "presses": 1,
-      "description": "Tab to Database dropdown field",
-      "timestamp": 1759325102.000000
-    },
-    {
-      "type": "delay",
-      "seconds": 0.5,
-      "reason": "Wait for database field to be focused",
-      "timestamp": 1759325102.500000
-    },
-    {
-      "type": "key",
-      "key": "down",
-      "presses": 1,
-      "description": "Navigate down to 1400_Training option",
-      "timestamp": 1759325103.000000
-    },
-    {
-      "type": "delay",
-      "seconds": 0.5,
-      "reason": "Wait after navigating to option",
-      "timestamp": 1759325103.500000
-    },
-    {
-      "type": "key",
       "key": "enter",
       "presses": 1,
-      "description": "Select 1400_Training from dropdown",
-      "timestamp": 1759325104.000000
-    },
-    {
-      "type": "delay",
-      "seconds": 0.5,
-      "reason": "Wait after selecting database",
-      "timestamp": 1759325104.500000
-    },
-    {
-      "type": "key",
-      "key": "enter",
-      "presses": 1,
-      "description": "Press Enter to click OK button",
+      "description": "Press Enter to login (skip database selection)",
       "timestamp": 1759325105.000000
-    },
-    {
-      "type": "delay",
-      "seconds": 0.5,
-      "reason": "Wait after first Enter press",
-      "timestamp": 1759325105.500000
-    },
-    {
-      "type": "key",
-      "key": "enter",
-      "presses": 1,
-      "description": "Press Enter again to ensure OK button is clicked",
-      "timestamp": 1759325106.000000
     },
     {
       "type": "delay",

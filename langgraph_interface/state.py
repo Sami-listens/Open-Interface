@@ -31,3 +31,26 @@ class OpenInterfaceState(TypedDict):
     model_name: str
     api_key: str
     custom_instructions: Optional[str]
+    
+    # Phased workflow fields
+    phased_workflow_file: Optional[str]
+    project_number: Optional[str]
+    verify_phases: Optional[bool]
+    phased_workflow_completed: Optional[bool]
+    excel_edits: Optional[List[Dict[str, Any]]]
+    completed_phases: Optional[List[str]]
+    current_phase: Optional[str]
+    phase_screenshots: Optional[Dict[str, str]]
+    
+    # Excel parsing fields
+    excel_file_path: Optional[str]
+    sheet_name: Optional[str]
+    excel_parse_status: Optional[str]
+    excel_parse_error: Optional[str]
+    
+    # Workflow execution fields
+    workflow_file: Optional[str]
+    workflow_completed: Optional[bool]
+    workflow_error: Optional[str]
+    executed_steps: Optional[int]
+    verify_steps: Optional[bool]
